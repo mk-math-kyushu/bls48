@@ -1,0 +1,9 @@
+.DS_Store
+*.o
+*.d
+*.a
+libsnark/src/algebra/curves/tests/test_bilinearity
+libsnark/src/algebra/curves/tests/test_pairing_time
+libsnark/src/algebra/curves/tests/test_groups
+libsnark/src/algebra/fields/tests/test_arith_fields
+libsnark/src/algebra/fields/tests/test_fields
