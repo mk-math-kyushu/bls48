@@ -4,7 +4,7 @@ Overview
 bls48 is an Optimal Ate Pairing(OAP) on BLS Curve implementation in C++.
 This implementation is based on the drafts below;
 
-- Y. Kiyomura, et al. "Secure and Eifficient Apiaring at 256-Bit Secure Level" (2017)
+- Y. Kiyomura, et al. "Secure and Eifficient Pairing at 256-Bit Secure Level" (2017)
 - C. Costello, K. Lauter, M. Naehrig, "Attractive Subfamilies of BLS Curves for Implementing High-Security Pairings." (2011)
 - draft-by-Kato(not submitted)
 
