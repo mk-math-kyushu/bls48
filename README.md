@@ -32,6 +32,107 @@ For example, on a fresh install of Ubuntu 14.04, install the following packages:
 
     $ sudo apt-get install build-essential git libgmp3-dev libprocps3-dev libgtest-dev python-markdown libboost-all-dev libssl-dev
 
+In the case of Ubuntu 16.04, install the following packages:
+
+    $ sudo apt-get install build-essential git libgmp3-dev libprocps4-dev libgtest-dev python-markdown libboost-all-dev libssl-dev
+
 Then, to compile, run:
 
     $ make
+
+
+--------------------------------------------------------------------------------
+Timing Test
+--------------------------------------------------------------------------------
+
+* Ubuntu14.04
+
+<table>
+    <tr>
+        <td>Security Level</td>
+        <td>100</td>
+        <td>256</td>
+    </tr>
+    <tr>
+        <td>Curve Parameter</td>
+        <td>BN256</td>
+        <td>BLS48</td>
+    </tr>
+    <tr>
+        <td>Scalar Multiplication on G1</td>
+        <td>0.08[ms]</td>
+        <td>2.32[ms]</td>
+    </tr>
+    <tr>
+        <td>Scalar Multiplication on G2</td>
+        <td>1.11[ms]</td>
+        <td>160.09[ms]</td>
+    </tr>
+    <tr>
+        <td>Pairing</td>
+        <td>2.81[ms]</td>
+        <td>509[ms]</td>
+    </tr>
+</table>
+
+
+
+* Ubuntu16.04
+<table>
+    <tr>
+        <td>Security Level</td>
+        <td>100</td>
+        <td>256</td>
+    </tr>
+    <tr>
+        <td>Curve Parameter</td>
+        <td>BN256</td>
+        <td>BLS48</td>
+    </tr>
+    <tr>
+        <td>Scalar Multiplication on G1</td>
+        <td>0.06[ms]</td>
+        <td>3.05[ms]</td>
+    </tr>
+    <tr>
+        <td>Scalar Multiplication on G2</td>
+        <td>1.24[ms]</td>
+        <td>230.61[ms]</td>
+    </tr>
+    <tr>
+        <td>Pairing</td>
+        <td>4.05[ms]</td>
+        <td>740.69[ms]</td>
+    </tr>
+</table>
+
+
+
+* Raspberry Pi (64bit)
+<table>
+    <tr>
+        <td>Security Level</td>
+        <td>100</td>
+        <td>256</td>
+    </tr>
+    <tr>
+        <td>Curve Parameter</td>
+        <td>BN256</td>
+        <td>BLS48</td>
+    </tr>
+    <tr>
+        <td>Scalar Multiplication on G1</td>
+        <td>6.68[ms]</td>
+        <td>41.15[ms]</td>
+    </tr>
+    <tr>
+        <td>Scalar Multiplication on G2</td>
+        <td>24.23[ms]</td>
+        <td>2643.23[ms]</td>
+    </tr>
+    <tr>
+        <td>Pairing</td>
+        <td>58[ms]</td>
+        <td>8549.02[ms]</td>
+    </tr>
+</table>
