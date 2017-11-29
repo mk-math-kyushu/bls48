@@ -45,7 +45,8 @@ Then, to compile, run:
 Timing Test
 --------------------------------------------------------------------------------
 
-* Ubuntu14.04
+* Ubuntu14.04　　
+Intel(R) Core(TM) i5-4210M CPU @ 2.60GHz, 4 cores
 
 <table>
     <tr>
@@ -77,7 +78,10 @@ Timing Test
 
 
 
-* Ubuntu16.04
+* Ubuntu16.04　　
+Intel(R) Core(TM) i7 CPU 950 @ 3.07GHz, 8 cores
+
+
 <table>
     <tr>
         <td>Security Level</td>
@@ -109,6 +113,9 @@ Timing Test
 
 
 * Raspberry Pi (64bit)
+Linux devuan 4.6.3-gb48d47a # 1 SMP aarch64 GNU/Linux fp asimd evtstrm crc32 @ 600MHz - 1200MHz, 4 cores
+
+
 <table>
     <tr>
         <td>Security Level</td>
