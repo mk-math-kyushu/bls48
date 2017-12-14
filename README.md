@@ -46,7 +46,7 @@ Timing Test
 --------------------------------------------------------------------------------
 
 * Ubuntu14.04　　
-Intel(R) Core(TM) i5-4210M CPU @ 2.60GHz, 4 cores
+Intel(R) Core(TM) i5-4210M CPU @ 2.60GHz, 4 cores RAM 8GB
 
 <table>
     <tr>
@@ -79,7 +79,7 @@ Intel(R) Core(TM) i5-4210M CPU @ 2.60GHz, 4 cores
 
 
 * Ubuntu16.04　　
-Intel(R) Core(TM) i7 CPU 950 @ 3.07GHz, 8 cores
+Intel(R) Core(TM) i7 CPU 950 @ 3.07GHz, 8 cores RAM 24GB
 
 
 <table>
@@ -112,7 +112,7 @@ Intel(R) Core(TM) i7 CPU 950 @ 3.07GHz, 8 cores
 
 
 
-* Raspberry Pi (64bit)
+* Raspberry Pi 3 model B
 Linux devuan 4.6.3-gb48d47a(64bit OS) CPU Cortex-A53 ARMv8 64bit @ 1.2GHz, 4 cores RAM 1GB
 
 
@@ -145,7 +145,7 @@ Linux devuan 4.6.3-gb48d47a(64bit OS) CPU Cortex-A53 ARMv8 64bit @ 1.2GHz, 4 cor
 </table>
 
 
-* Raspberry Pi (32bit)
+* Raspberry Pi model B
 Ubuntu16.04.2 LTS xenial(32bit OS) CPU Cortex-A53 ARMv8 64bit @ 1.2GHz, 4 cores RAM 1GB
 
 
