@@ -113,7 +113,7 @@ Intel(R) Core(TM) i7 CPU 950 @ 3.07GHz, 8 cores
 
 
 * Raspberry Pi (64bit)
-Linux devuan 4.6.3-gb48d47a # 1 SMP aarch64 GNU/Linux fp asimd evtstrm crc32 @ 600MHz - 1200MHz, 4 cores
+Linux devuan 4.6.3-gb48d47a(64bit OS) CPU Cortex-A53 ARMv8 64bit @ 1.2GHz, 4 cores RAM 1GB
 
 
 <table>
@@ -141,5 +141,38 @@ Linux devuan 4.6.3-gb48d47a # 1 SMP aarch64 GNU/Linux fp asimd evtstrm crc32 @ 6
         <td>Pairing</td>
         <td>58[ms]</td>
         <td>8549.02[ms]</td>
+    </tr>
+</table>
+
+
+* Raspberry Pi (32bit)
+Ubuntu16.04.2 LTS xenial(32bit OS) CPU Cortex-A53 ARMv8 64bit @ 1.2GHz, 4 cores RAM 1GB
+
+
+<table>
+    <tr>
+        <td>Security Level</td>
+        <td>100</td>
+        <td>256</td>
+    </tr>
+    <tr>
+        <td>Curve Parameter</td>
+        <td>BN256</td>
+        <td>BLS48</td>
+    </tr>
+    <tr>
+        <td>Scalar Multiplication on G1</td>
+        <td>5.39[ms]</td>
+        <td>38.42[ms]</td>
+    </tr>
+    <tr>
+        <td>Scalar Multiplication on G2</td>
+        <td>21.81[ms]</td>
+        <td>2660.55[ms]</td>
+    </tr>
+    <tr>
+        <td>Pairing</td>
+        <td>53.03[ms]</td>
+        <td>8585.53[ms]</td>
     </tr>
 </table>
