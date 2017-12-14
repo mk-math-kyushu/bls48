@@ -2,6 +2,7 @@
 *.o
 *.d
 *.a
+*.txt
 libsnark/src/algebra/curves/tests/test_bilinearity
 libsnark/src/algebra/curves/tests/test_pairing_time
 libsnark/src/algebra/curves/tests/test_groups
