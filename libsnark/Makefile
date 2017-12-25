@@ -21,7 +21,7 @@ CXXFLAGS += -I$(DEPINST)/include -Isrc
 LDFLAGS += -L$(DEPINST)/lib -L/usr/lib -Wl,-rpath,$(DEPINST)/lib
 LDLIBS += -lgmpxx -lgmp -lboost_program_options-mt
 # OpenSSL and its dependencies (needed explicitly for static builds):
-LDLIBS += -lcrypto -ldl -lz -Wl,--no-as-needed -lrt
+LDLIBS += -lcrypto -ldl -lz
 # List of .a files to include within libsnark.a and libsnark.so:
 AR_LIBS =
 # List of library files to install:
@@ -245,14 +245,15 @@ $(LIBGTEST_A): $(GTESTDIR)/src/gtest-all.cc $(DEPINST_EXISTS)
 
 # libsnark.a will contains all of our relevant object files, and we also mash in the .a files of relevant dependencies built by ./prepare-depends.sh
 $(LIBSNARK_A): $(LIB_OBJS) $(AR_LIBS)
-	( \
-	  echo "create $(LIBSNARK_A)"; \
-	  echo "addmod $(LIB_OBJS)"; \
-	  if [ -n "$(AR_LIBS)" ]; then for AR_LIB in $(AR_LIBS); do echo addlib $$AR_LIB; done; fi; \
-	  echo "save"; \
-	  echo "end"; \
-	) | $(AR) -M
-	$(AR) s $(LIBSNARK_A)
+	$(AR) rcs $(LIBSNARK_A) $(LIB_OBJS)
+#( \
+#	  echo "create $(LIBSNARK_A)"; \
+#	  echo "addmod $(LIB_OBJS)"; \
+#	  if [ -n "$(AR_LIBS)" ]; then for AR_LIB in $(AR_LIBS); do echo addlib $$AR_LIB; done; fi; \
+#	  echo "save"; \
+#	  echo "end"; \
+#	) | $(AR) -M
+#$(AR) s $(LIBSNARK_A)
 
 libsnark.so: $(LIBSNARK_A) $(DEPINST_EXISTS)
 	$(CXX) -o $@   --shared -Wl,--whole-archive $(LIBSNARK_A) $(CXXFLAGS) $(LDFLAGS) -Wl,--no-whole-archive $(LDLIBS)
