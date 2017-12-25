@@ -114,7 +114,7 @@ std::istream& operator>>(std::istream& in, bls48_ate_G2_precomp &prec_Q)
 
 bls48_Fq48 bls48_final_exponentiation_first_chunk(const bls48_Fq48 &elt)//easy part
 {
-    enter_block("Call to bls48_final_exponentiation_first_chunk");
+    //enter_block("Call to bls48_final_exponentiation_first_chunk");
 
     /*
       Computes result = elt^((q^24-1)*(q^8+1)).
@@ -134,14 +134,14 @@ bls48_Fq48 bls48_final_exponentiation_first_chunk(const bls48_Fq48 &elt)//easy p
     const bls48_Fq48 D = C.Frobenius_map(8);
     const bls48_Fq48 result = D * C;
 
-    leave_block("Call to bls48_final_exponentiation_first_chunk");
+    //leave_block("Call to bls48_final_exponentiation_first_chunk");
 
     return result;
 }
 
 bls48_Fq48 bls48_exp_by_neg_z(const bls48_Fq48 &elt)
 {
-    enter_block("Call to bls48_exp_by_neg_z");
+    //enter_block("Call to bls48_exp_by_neg_z");
 
     bls48_Fq48 result = elt^bls48_final_exponent_z;
     if (!bls48_final_exponent_is_z_neg)
@@ -149,14 +149,14 @@ bls48_Fq48 bls48_exp_by_neg_z(const bls48_Fq48 &elt)
         result = result.unitary_inverse();
     }
 
-    leave_block("Call to bls48_exp_by_neg_z");
+    //leave_block("Call to bls48_exp_by_neg_z");
 
     return result;
 }
 
 bls48_Fq48 bls48_final_exponentiation_last_chunk(const bls48_Fq48 &elt)//hard part
 {
-    enter_block("Call to bls48_final_exponentiation_last_chunk");
+    //enter_block("Call to bls48_final_exponentiation_last_chunk");
 
     /*
 
@@ -230,14 +230,14 @@ bls48_Fq48 bls48_final_exponentiation_last_chunk(const bls48_Fq48 &elt)//hard pa
 
     const bls48_Fq48 result = f;
 
-    leave_block("Call to bls48_final_exponentiation_last_chunk");
+    //leave_block("Call to bls48_final_exponentiation_last_chunk");
 
     return result;
 }
 
 bls48_GT bls48_final_exponentiation(const bls48_Fq48 &elt)
 {
-    enter_block("Call to bls48_final_exponentiation");
+    //enter_block("Call to bls48_final_exponentiation");
 
     // OLD naive version:
         //bls48_GT result = elt^bls48_final_exponent;
@@ -245,7 +245,7 @@ bls48_GT bls48_final_exponentiation(const bls48_Fq48 &elt)
     bls48_Fq48 A = bls48_final_exponentiation_first_chunk(elt);
     bls48_GT result = bls48_final_exponentiation_last_chunk(A);
 
-    leave_block("Call to bls48_final_exponentiation");
+    //leave_block("Call to bls48_final_exponentiation");
     return result;
 }
 
@@ -253,7 +253,7 @@ bls48_GT bls48_final_exponentiation(const bls48_Fq48 &elt)
 
 bls48_ate_G1_precomp bls48_ate_precompute_G1(const bls48_G1& P)
 {
-    enter_block("Call to bls48_ate_precompute_G1");
+    //enter_block("Call to bls48_ate_precompute_G1");
 
     bls48_G1 Pcopy = P;
     Pcopy.to_affine_coordinates();
@@ -263,14 +263,14 @@ bls48_ate_G1_precomp bls48_ate_precompute_G1(const bls48_G1& P)
     result.PX = Pcopy.X;
     result.PY = Pcopy.Y;
 
-    leave_block("Call to bls48_ate_precompute_G1");
+    //leave_block("Call to bls48_ate_precompute_G1");
     return result;
 }
 
 
 bls48_ate_G2_precomp bls48_ate_precompute_G2(const bls48_G2& Q)
 {
-    enter_block("Call to bls48_ate_precompute_G2");
+    //enter_block("Call to bls48_ate_precompute_G2");
 
     bls48_G2 Qcopy(Q);//bls48_G2 Qcopy = Q;
     Qcopy.to_affine_coordinates();
@@ -284,7 +284,7 @@ bls48_ate_G2_precomp bls48_ate_precompute_G2(const bls48_G2& Q)
 
 
 
-    leave_block("Call to bls48_ate_precompute_G2");
+    //leave_block("Call to bls48_ate_precompute_G2");
     return result;
 }
 
@@ -292,7 +292,7 @@ bls48_ate_G2_precomp bls48_ate_precompute_G2(const bls48_G2& Q)
 bls48_Fq48 bls48_ate_miller_loop(const bls48_G1_precomp &prec_P,
                                      const bls48_G2_precomp &prec_Q)
 {
-    enter_block("Call to bls48_ate_miller_loop");
+    //enter_block("Call to bls48_ate_miller_loop");
 
     bls48_Fq48 f = bls48_Fq48::one();//f <- 1
     bls48_G2 Q;//Q <- Q
@@ -442,30 +442,30 @@ bls48_Fq48 bls48_ate_miller_loop(const bls48_G1_precomp &prec_P,
 
 
 
-    leave_block("Call to bls48_ate_miller_loop");
+    //leave_block("Call to bls48_ate_miller_loop");
     return f;
 }
 
 
 bls48_Fq48 bls48_ate_pairing(const bls48_G1& P, const bls48_G2 &Q)
 {
-    enter_block("Call to bls48_ate_pairing");
+    //enter_block("Call to bls48_ate_pairing");
     bls48_ate_G1_precomp prec_P = bls48_ate_precompute_G1(P);
     //assert(prec_P.PY.squared() - prec_P.PX.squared()*prec_P.PX == bls48_Fq::one());
     bls48_ate_G2_precomp prec_Q = bls48_ate_precompute_G2(Q);
     //assert(prec_Q.QY.squared() - prec_Q.QX.squared()*prec_Q.QX == bls48_twist_coeff_b);
     bls48_Fq48 result = bls48_ate_miller_loop(prec_P, prec_Q);
-    leave_block("Call to bls48_ate_pairing");
+    //leave_block("Call to bls48_ate_pairing");
     //std::cout << "after miller_loop result = " << result << std::endl;
     return result;
 }
 
 bls48_GT bls48_ate_reduced_pairing(const bls48_G1 &P, const bls48_G2 &Q)
 {
-    enter_block("Call to bls48_ate_reduced_pairing");
+    //enter_block("Call to bls48_ate_reduced_pairing");
     const bls48_Fq48 f = bls48_ate_pairing(P, Q);
     const bls48_GT result = bls48_final_exponentiation(f);
-    leave_block("Call to bls48_ate_reduced_pairing");
+    //leave_block("Call to bls48_ate_reduced_pairing");
     //std::cout << "reduced result = " << result << std::endl;
     return result;
 }

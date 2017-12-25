@@ -143,7 +143,7 @@ void affine_pairing_test()
 
 int main(void)
 {
-    start_profiling();
+    //start_profiling();
 /*
     edwards_pp::init_public_params();
     pairing_test<edwards_pp>();

@@ -11,6 +11,8 @@
 #define BIGINT_TCC_
 #include <cassert>
 #include <cstring>
+#include <iostream>
+#include <random>
 
 namespace libsnark {
 
@@ -166,10 +168,16 @@ template<mp_size_t n>
 bigint<n>& bigint<n>::randomize()
 {
     assert(GMP_NUMB_BITS == sizeof(mp_limb_t) * 8);
-    FILE *fp = fopen("/dev/urandom", "r");  //TODO Remove hard-coded use of /dev/urandom.
-    size_t bytes_read = fread(this->data, 1, sizeof(mp_limb_t) * n, fp);
-    assert(bytes_read == sizeof(mp_limb_t) * n);
-    fclose(fp);
+
+    std::random_device rd;
+    for (long i = 0; i < n; i++) {
+        this->data[i] = (mp_limb_t)rd();
+    }
+
+    //FILE *fp = fopen("/dev/urandom", "rb");  //TODO Remove hard-coded use of /dev/urandom.
+    //size_t bytes_read = fread(this->data, sizeof(mp_limb_t), n, fp);
+    //assert(bytes_read == sizeof(mp_limb_t) * n);
+    //fclose(fp);
 
     return (*this);
 }

@@ -108,7 +108,7 @@ std::istream& operator>>(std::istream& in, alt_bn128_ate_G2_precomp &prec_Q)
 
 alt_bn128_Fq12 alt_bn128_final_exponentiation_first_chunk(const alt_bn128_Fq12 &elt)
 {
-    enter_block("Call to alt_bn128_final_exponentiation_first_chunk");
+    //enter_block("Call to alt_bn128_final_exponentiation_first_chunk");
 
     /*
       Computes result = elt^((q^6-1)*(q^2+1)).
@@ -128,14 +128,14 @@ alt_bn128_Fq12 alt_bn128_final_exponentiation_first_chunk(const alt_bn128_Fq12 &
     const alt_bn128_Fq12 D = C.Frobenius_map(2);
     const alt_bn128_Fq12 result = D * C;
 
-    leave_block("Call to alt_bn128_final_exponentiation_first_chunk");
+    //leave_block("Call to alt_bn128_final_exponentiation_first_chunk");
 
     return result;
 }
 
 alt_bn128_Fq12 alt_bn128_exp_by_neg_z(const alt_bn128_Fq12 &elt)
 {
-    enter_block("Call to alt_bn128_exp_by_neg_z");
+    //enter_block("Call to alt_bn128_exp_by_neg_z");
 
     alt_bn128_Fq12 result = elt.cyclotomic_exp(alt_bn128_final_exponent_z);
     if (!alt_bn128_final_exponent_is_z_neg)
@@ -143,14 +143,14 @@ alt_bn128_Fq12 alt_bn128_exp_by_neg_z(const alt_bn128_Fq12 &elt)
         result = result.unitary_inverse();
     }
 
-    leave_block("Call to alt_bn128_exp_by_neg_z");
+    //leave_block("Call to alt_bn128_exp_by_neg_z");
 
     return result;
 }
 
 alt_bn128_Fq12 alt_bn128_final_exponentiation_last_chunk(const alt_bn128_Fq12 &elt)
 {
-    enter_block("Call to alt_bn128_final_exponentiation_last_chunk");
+    //enter_block("Call to alt_bn128_final_exponentiation_last_chunk");
 
     /*
       Follows Laura Fuentes-Castaneda et al. "Faster hashing to G2"
@@ -217,21 +217,21 @@ alt_bn128_Fq12 alt_bn128_final_exponentiation_last_chunk(const alt_bn128_Fq12 &e
 
     const alt_bn128_Fq12 result = V;
 
-    leave_block("Call to alt_bn128_final_exponentiation_last_chunk");
+    //leave_block("Call to alt_bn128_final_exponentiation_last_chunk");
 
     return result;
 }
 
 alt_bn128_GT alt_bn128_final_exponentiation(const alt_bn128_Fq12 &elt)
 {
-    enter_block("Call to alt_bn128_final_exponentiation");
+    //enter_block("Call to alt_bn128_final_exponentiation");
     /* OLD naive version:
         alt_bn128_GT result = elt^alt_bn128_final_exponent;
     */
     alt_bn128_Fq12 A = alt_bn128_final_exponentiation_first_chunk(elt);
     alt_bn128_GT result = alt_bn128_final_exponentiation_last_chunk(A);
 
-    leave_block("Call to alt_bn128_final_exponentiation");
+    //leave_block("Call to alt_bn128_final_exponentiation");
     return result;
 }
 
@@ -288,7 +288,7 @@ void mixed_addition_step_for_flipped_miller_loop(const alt_bn128_G2 base,
 
 alt_bn128_ate_G1_precomp alt_bn128_ate_precompute_G1(const alt_bn128_G1& P)
 {
-    enter_block("Call to alt_bn128_ate_precompute_G1");
+    //enter_block("Call to alt_bn128_ate_precompute_G1");
 
     alt_bn128_G1 Pcopy = P;
     Pcopy.to_affine_coordinates();
@@ -297,13 +297,13 @@ alt_bn128_ate_G1_precomp alt_bn128_ate_precompute_G1(const alt_bn128_G1& P)
     result.PX = Pcopy.X;
     result.PY = Pcopy.Y;
 
-    leave_block("Call to alt_bn128_ate_precompute_G1");
+    //leave_block("Call to alt_bn128_ate_precompute_G1");
     return result;
 }
 
 alt_bn128_ate_G2_precomp alt_bn128_ate_precompute_G2(const alt_bn128_G2& Q)
 {
-    enter_block("Call to alt_bn128_ate_precompute_G2");
+    //enter_block("Call to alt_bn128_ate_precompute_G2");
 
     alt_bn128_G2 Qcopy(Q);
     Qcopy.to_affine_coordinates();
@@ -360,14 +360,14 @@ alt_bn128_ate_G2_precomp alt_bn128_ate_precompute_G2(const alt_bn128_G2& Q)
     mixed_addition_step_for_flipped_miller_loop(Q2, R, c);
     result.coeffs.push_back(c);
 
-    leave_block("Call to alt_bn128_ate_precompute_G2");
+    //leave_block("Call to alt_bn128_ate_precompute_G2");
     return result;
 }
 
 alt_bn128_Fq12 alt_bn128_ate_miller_loop(const alt_bn128_ate_G1_precomp &prec_P,
                                      const alt_bn128_ate_G2_precomp &prec_Q)
 {
-    enter_block("Call to alt_bn128_ate_miller_loop");
+    //enter_block("Call to alt_bn128_ate_miller_loop");
 
     alt_bn128_Fq12 f = alt_bn128_Fq12::one();
 
@@ -414,7 +414,7 @@ alt_bn128_Fq12 alt_bn128_ate_miller_loop(const alt_bn128_ate_G1_precomp &prec_P,
     c = prec_Q.coeffs[idx++];
     f = f.mul_by_024(c.ell_0,prec_P.PY * c.ell_VW,prec_P.PX * c.ell_VV);
 
-    leave_block("Call to alt_bn128_ate_miller_loop");
+    //leave_block("Call to alt_bn128_ate_miller_loop");
     return f;
 }
 
@@ -423,7 +423,7 @@ alt_bn128_Fq12 alt_bn128_ate_double_miller_loop(const alt_bn128_ate_G1_precomp &
                                      const alt_bn128_ate_G1_precomp &prec_P2,
                                      const alt_bn128_ate_G2_precomp &prec_Q2)
 {
-    enter_block("Call to alt_bn128_ate_double_miller_loop");
+    //enter_block("Call to alt_bn128_ate_double_miller_loop");
 
     alt_bn128_Fq12 f = alt_bn128_Fq12::one();
 
@@ -482,27 +482,27 @@ alt_bn128_Fq12 alt_bn128_ate_double_miller_loop(const alt_bn128_ate_G1_precomp &
     f = f.mul_by_024(c1.ell_0, prec_P1.PY * c1.ell_VW, prec_P1.PX * c1.ell_VV);
     f = f.mul_by_024(c2.ell_0, prec_P2.PY * c2.ell_VW, prec_P2.PX * c2.ell_VV);
 
-    leave_block("Call to alt_bn128_ate_double_miller_loop");
+    //leave_block("Call to alt_bn128_ate_double_miller_loop");
 
     return f;
 }
 
 alt_bn128_Fq12 alt_bn128_ate_pairing(const alt_bn128_G1& P, const alt_bn128_G2 &Q)
 {
-    enter_block("Call to alt_bn128_ate_pairing");
+    //enter_block("Call to alt_bn128_ate_pairing");
     alt_bn128_ate_G1_precomp prec_P = alt_bn128_ate_precompute_G1(P);
     alt_bn128_ate_G2_precomp prec_Q = alt_bn128_ate_precompute_G2(Q);
     alt_bn128_Fq12 result = alt_bn128_ate_miller_loop(prec_P, prec_Q);
-    leave_block("Call to alt_bn128_ate_pairing");
+    //leave_block("Call to alt_bn128_ate_pairing");
     return result;
 }
 
 alt_bn128_GT alt_bn128_ate_reduced_pairing(const alt_bn128_G1 &P, const alt_bn128_G2 &Q)
 {
-    enter_block("Call to alt_bn128_ate_reduced_pairing");
+    //enter_block("Call to alt_bn128_ate_reduced_pairing");
     const alt_bn128_Fq12 f = alt_bn128_ate_pairing(P, Q);
     const alt_bn128_GT result = alt_bn128_final_exponentiation(f);
-    leave_block("Call to alt_bn128_ate_reduced_pairing");
+    //leave_block("Call to alt_bn128_ate_reduced_pairing");
     return result;
 }
 

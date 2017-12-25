@@ -18,10 +18,10 @@ DEPSRC = depsrc
 DEPINST = depinst
 
 CXXFLAGS += -I$(DEPINST)/include -Isrc
-LDFLAGS += -L$(DEPINST)/lib -Wl,-rpath,$(DEPINST)/lib
-LDLIBS += -lgmpxx -lgmp -lboost_program_options
+LDFLAGS += -L$(DEPINST)/lib -L/usr/lib -Wl,-rpath,$(DEPINST)/lib
+LDLIBS += -lgmpxx -lgmp -lboost_program_options-mt
 # OpenSSL and its dependencies (needed explicitly for static builds):
-LDLIBS += -lcrypto -ldl -lz
+LDLIBS += -lcrypto -ldl -lz -Wl,--no-as-needed -lrt
 # List of .a files to include within libsnark.a and libsnark.so:
 AR_LIBS =
 # List of library files to install:
@@ -58,7 +58,7 @@ LIB_SRCS = \
 	src/algebra/curves/bls48/bls48_pp.cpp \
 	src/common/data_structures/integer_permutation.cpp \
 	src/common/data_structures/set_commitment.cpp \
-	src/common/profiling.cpp \
+	#src/common/profiling.cpp \
 	src/common/routing_algorithms/as_waksman_routing_algorithm.cpp \
 	src/common/routing_algorithms/benes_routing_algorithm.cpp \
 	src/common/utils.cpp \
@@ -122,7 +122,7 @@ EXECUTABLES = \
 	src/algebra/curves/tests/test_groups \
 	src/algebra/fields/tests/test_fields \
 	src/algebra/fields/tests/test_arith_fields \
-	src/common/routing_algorithms/profiling/profile_routing_algorithms \
+	#src/common/routing_algorithms/profiling/profile_routing_algorithms \
 	src/common/routing_algorithms/tests/test_routing_algorithms \
 
 
