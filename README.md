@@ -176,3 +176,67 @@ Ubuntu16.04.2 LTS xenial(32bit OS) CPU Cortex-A53 ARMv8 64bit @ 1.2GHz, 4 cores 
         <td>8585.53[ms]</td>
     </tr>
 </table>
+
+
+* Mac
+Mac OS Sierra Intel Core i7 @ 3.5 GHz, 2 cores RAM 16 GB
+
+<table>
+    <tr>
+        <td>Security Level</td>
+        <td>100</td>
+        <td>256</td>
+    </tr>
+    <tr>
+        <td>Curve Parameter</td>
+        <td>BN256</td>
+        <td>BLS48</td>
+    </tr>
+    <tr>
+        <td>Scalar Multiplication on G1</td>
+        <td>0[ms]</td>
+        <td>1.07[ms]</td>
+    </tr>
+    <tr>
+        <td>Scalar Multiplication on G2</td>
+        <td>0.14[ms]</td>
+        <td>112.86[ms]</td>
+    </tr>
+    <tr>
+        <td>Pairing</td>
+        <td>2.11[ms]</td>
+        <td>373.02[ms]</td>
+    </tr>
+</table>
+
+
+* Windows (Using MSYS2)
+Windows10 Intel(R) Core(TM) i7-7500U CPU @ 2.70GHz, 4 cores RAM 16 GB
+
+<table>
+    <tr>
+        <td>Security Level</td>
+        <td>100</td>
+        <td>256</td>
+    </tr>
+    <tr>
+        <td>Curve Parameter</td>
+        <td>BN256</td>
+        <td>BLS48</td>
+    </tr>
+    <tr>
+        <td>Scalar Multiplication on G1</td>
+        <td>0[ms]</td>
+        <td>1.5[ms]</td>
+    </tr>
+    <tr>
+        <td>Scalar Multiplication on G2</td>
+        <td>0.9[ms]</td>
+        <td>127.74[ms]</td>
+    </tr>
+    <tr>
+        <td>Pairing</td>
+        <td>2.25[ms]</td>
+        <td>409.8[ms]</td>
+    </tr>
+</table>
