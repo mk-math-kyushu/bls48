@@ -60,7 +60,7 @@ void pairing_timing_test()
       //std::cout << "Fr<ppT>::field_char()" << Fr<ppT>::field_char() << std::endl;
     }
 
-    std::cout << "Average time of a*P = " << Timing_aP << "/repeat_count [ns]" << std::endl;
+    std::cout << "Average time of a*P = " << Timing_aP/repeat_count << " [ns]" << std::endl;
     std::cout << "Average time of b*Q = " << Timing_bQ/repeat_count << "[ns]" << std::endl;
     std::cout << "Average time of pairing " << Timing_pairing/repeat_count << "[ns]" << std::endl;
 }
@@ -76,9 +76,9 @@ int main(void)
 
 
 
-    // std::cout << "bls test start" << std::endl;
-    // bls48_pp::init_public_params();
-    // pairing_timing_test<bls48_pp>();
+    std::cout << "bls test start" << std::endl;
+    bls48_pp::init_public_params();
+    pairing_timing_test<bls48_pp>();
 
 
 
