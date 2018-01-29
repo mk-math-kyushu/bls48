@@ -19,7 +19,7 @@ void pairing_timing_test()
     printf("Running timing tests:\n");
 
 
-    for(int i=0; i<100; i++){
+    for(int i=0; i<repeat_count; i++){
       //GT<ppT> GT_one = GT<ppT>::one();
 
       start = std::chrono::system_clock::now();
@@ -60,9 +60,9 @@ void pairing_timing_test()
       //std::cout << "Fr<ppT>::field_char()" << Fr<ppT>::field_char() << std::endl;
     }
 
-    std::cout << "Average time of a*P = " << Timing_aP/repeat_count << "[ms]" << std::endl;
-    std::cout << "Average time of b*Q = " << Timing_bQ/repeat_count << "[ms]" << std::endl;
-    std::cout << "Average time of pairing " << Timing_pairing/repeat_count << "[ms]" << std::endl;
+    std::cout << "Average time of a*P = " << Timing_aP/repeat_count << "[ns]" << std::endl;
+    std::cout << "Average time of b*Q = " << Timing_bQ/repeat_count << "[ns]" << std::endl;
+    std::cout << "Average time of pairing " << Timing_pairing/repeat_count << "[ns]" << std::endl;
 }
 
 
