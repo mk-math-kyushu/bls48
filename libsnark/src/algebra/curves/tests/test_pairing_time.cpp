@@ -19,18 +19,18 @@ void pairing_timing_test()
     printf("Running timing tests:\n");
 
 
-    for(int i=0; i<100; i++){
+    for(int i=0; i<repeat_count; i++){
       //GT<ppT> GT_one = GT<ppT>::one();
 
       start = std::chrono::system_clock::now();
       G1<ppT> P = (Fr<ppT>::random_element()) * G1<ppT>::one();
       end = std::chrono::system_clock::now();
-      Timing_aP = Timing_aP +  std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+      Timing_aP = Timing_aP +  std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
 
       start = std::chrono::system_clock::now();
       G2<ppT> Q = (Fr<ppT>::random_element()) * G2<ppT>::one();
       end = std::chrono::system_clock::now();
-      Timing_bQ = Timing_bQ +  std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+      Timing_bQ = Timing_bQ +  std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
       //std::cout << "Q is in G2"<< Q.is_well_formed() << std::endl;
       //assert(Q.Y.squared() - Q.X.squared()*Q.X == (Q.Z.squared()*Q.Z).squared());
 
@@ -55,14 +55,14 @@ void pairing_timing_test()
       start = std::chrono::system_clock::now();
       ppT::reduced_pairing(P, Q);
       end = std::chrono::system_clock::now();
-      Timing_pairing = Timing_pairing + std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count();
+      Timing_pairing = Timing_pairing + std::chrono::duration_cast<std::chrono::nanoseconds>(end-start).count();
 
       //std::cout << "Fr<ppT>::field_char()" << Fr<ppT>::field_char() << std::endl;
     }
 
-    std::cout << "Average time of a*P = " << Timing_aP/repeat_count << "[ms]" << std::endl;
-    std::cout << "Average time of b*Q = " << Timing_bQ/repeat_count << "[ms]" << std::endl;
-    std::cout << "Average time of pairing " << Timing_pairing/repeat_count << "[ms]" << std::endl;
+    std::cout << "Average time of a*P = " << Timing_aP/repeat_count << "[ns]" << std::endl;
+    std::cout << "Average time of b*Q = " << Timing_bQ/repeat_count << "[ns]" << std::endl;
+    std::cout << "Average time of pairing " << Timing_pairing/repeat_count << "[ns]" << std::endl;
 }
 
 
